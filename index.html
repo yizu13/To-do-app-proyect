@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do list app</title>
+    <meta name="Todo list app" content="My first app">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="container">
+    <section>
+    <div id="list_adder">
+        <button class="title">
+            To Do list
+        </button>
+    <div class="list_creator" id="creator_list">
+    <input type="text" id="task" placeholder="Add a task">
+    <button id="add_button" onclick="addItem()">+</button>
+    </div>
+    <ul id="list">
+        <li id="list_element1">hola
+            <div class="buttons">
+                <button class="delete_button" id="delete_button1"><img src="delete.svg" width="16px" height="16px"></button>
+            </div>
+        </li>
+        
+        
+    </ul>
+    
+    <div id="list_footer">
+        <p class="text"><span id="counter">0</span> items</p>
+        <button id="clear_button" onclick="delete_all()"><b>Delete all</b></button>
+    </div>
+</div>
+    </section>
+
+</body>
+<script src="script.js"></script>
+<footer>
+    <p>Created by Jesús Alexander Hernández De Los Santos</p>
+    </footer>
+
+</html>
