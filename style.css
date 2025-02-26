@@ -11,7 +11,7 @@
     position: absolute;
     width: 500px;
     height: 600px;
-    top: 50%;
+    top: 47%;
     left: 50%;
     transform: translate(-50%,-50%);
     background: #fff;
@@ -143,7 +143,7 @@ b{
 
 
 
-#add_button:hover{
+.add_button:hover{
     cursor: pointer;
     box-shadow: 0 0 5px rgb(0,140,255),
     0 0 25px rgb(0,140,255),
@@ -175,7 +175,7 @@ b{
   transition-property: box-shadow;
 }
 
-#add_button{
+.add_button{
     background: rgb(0,140,255);
     box-shadow: 0 0 25px rgb(0,140,255);
 }
@@ -250,5 +250,36 @@ b{
   }
 
   .text{
-    color:#a3b2c5;
+    color:rgb(163, 178, 197);
+  }
+
+  .counter_limit{
+    color: rgb(191, 4, 38);
+  }
+
+  .counter_available{
+    color: rgb(163, 178, 197);
+  }
+
+  .unavailable_add_button{
+    background: rgb(163, 178, 197);
+    box-shadow: 0 0 25px rgb(163, 178, 197);
+  }
+
+  #footer{
+    position: absolute;
+    width: 350px;
+    height: 5px;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 30px;
+   
+  }
+
+  #footer_text{
+    position:absolute;
+    top:0%;
   }

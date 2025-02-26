@@ -14,17 +14,10 @@
             To Do list
         </button>
     <div class="list_creator" id="creator_list">
-    <input type="text" id="task" placeholder="Add a task">
-    <button id="add_button" onclick="addItem()">+</button>
+    <input type="text" id="task" maxlength="48" placeholder="Add a task">
+    <button id="add_button" class="add_button" onclick="addItem()">+</button>
     </div>
-    <ul id="list">
-        <li id="list_element1">hola
-            <div class="buttons">
-                <button class="delete_button" id="delete_button1"><img src="delete.svg" width="16px" height="16px"></button>
-            </div>
-        </li>
-        
-        
+    <ul id="list"> 
     </ul>
     
     <div id="list_footer">
@@ -37,7 +30,9 @@
 </body>
 <script src="script.js"></script>
 <footer>
-    <p>Created by Jesús Alexander Hernández De Los Santos</p>
+    <div id="footer">
+    <p id="footer_text">Created by Jesús Alexander Hernández De Los Santos</p>
+    </div>
     </footer>
 
 </html>
