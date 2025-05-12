@@ -283,3 +283,38 @@ b{
     position:absolute;
     top:0%;
   }
+
+  .hide{
+    display: none;
+  }
+
+  #selectContainer{
+    border-color: transparent;
+    margin-left: 4vw;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+
+#selectContainer:active {
+    border: #008cff;
+    border-radius: 10px;
+}
+
+#selectContainer:hover {
+    cursor: pointer;
+    border-color: #008cff;
+    border-width: 0.3em;
+    border-radius: 10px;
+}
+
+#selectContainer::after{
+  border:none;
+}
+
+#selectContainer:focus-within {
+  border-color: #008cff; /* Green border when selected */
+  border-width: 0.3em;
+  border-radius: 10px;
+}

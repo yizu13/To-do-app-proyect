@@ -5,8 +5,12 @@ let list_selector = null;
 let list = null;
 let amountItems = 0;
 let counter = null;
+let completedTasks = null;
+
+const selected = document.getElementById("selectContainer");
 
 function initialize(){
+    console.log(localStorage)
     field_value = document.getElementById("task");
     list_selector = document.getElementById("list");
     list = document.getElementById("list");
@@ -14,6 +18,11 @@ function initialize(){
     button = document.getElementById("add_button");
     counter = document.getElementById("counter");
 }
+
+document.addEventListener("keydown", (e)=>{
+    initialize()
+    if(e.key === "Enter") button.click() 
+});
 
 function addItem(){
     initialize();
@@ -63,7 +72,8 @@ function addItem(){
     button.classList.add("unavailable_add_button"); button.classList.remove("add_button")
     button.disabled = true;
  }
-    
+
+ selected.click();
 
 }
 
@@ -77,17 +87,30 @@ function deleteItem(e){
         counter.classList.remove("counter_limit"); counter.classList.add("counter_available");
         button.classList.remove("unavailable_add_button"); button.classList.add("add_button")
     }
+    selected.click();
 }
 
 function lineText(e){
     initialize();
     e.currentTarget.classList.toggle("line_in_text");
+    updateCounter();
+    selected.click();
 }
 
 function updateCounter(){
     initialize();
     amountItems = list.children.length;
-    counter.textContent = amountItems;
+    completedTasks = null;
+    const listOf = document.querySelectorAll("span");
+    for(let i = 0; i < listOf.length - 1; i++){
+        const value = listOf[i].classList.value.split(" ");
+        const foundIt = value.find(element => element === "line_in_text");
+        if(foundIt){
+            completedTasks += 1;
+        }
+    }
+
+    counter.textContent = amountItems - completedTasks;
 }
 
 function delete_all(){
@@ -100,4 +123,37 @@ function delete_all(){
     button.classList.remove("unavailable_add_button"); button.classList.add("add_button");
     button.disabled = false;
     updateCounter();
+    selected.click();
 }
+
+selected.addEventListener("click", (element)=>{
+    const tasks = document.querySelectorAll("li");
+    for(let i = 0; i < tasks.length; i++){
+       const tag = tasks[i].children[0].classList
+       const generalClass = tasks[i].classList
+       let found;
+    switch(element.target.value){
+        case "All":
+            generalClass.remove("hide");
+            break;
+        case "Completed":
+            found = tag.value.split(" ").find((element)=> element === "line_in_text");
+            if(!found){
+                generalClass.add("hide");
+            }else{
+                generalClass.remove("hide");
+            }
+            break;
+        case "earrings":
+            found = tag.value.split(" ").find((element) => element === "line_in_text");
+            if(found){
+                generalClass.add("hide");
+            }else{
+                generalClass.remove("hide")
+            }
+            break;
+        default:
+            alert("No selection")
+        }
+    }
+})
