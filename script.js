@@ -10,13 +10,13 @@ let completedTasks = null;
 const selected = document.getElementById("selectContainer");
 
 function initialize(){
-    console.log(localStorage)
     field_value = document.getElementById("task");
     list_selector = document.getElementById("list");
     list = document.getElementById("list");
     storeField = field_value.value;
     button = document.getElementById("add_button");
     counter = document.getElementById("counter");
+    save()
 }
 
 document.addEventListener("keydown", (e)=>{
@@ -157,3 +157,35 @@ selected.addEventListener("click", (element)=>{
         }
     }
 })
+
+
+function save(){
+    localStorage.clear()
+    const data = document.querySelectorAll("li");
+
+    for(let i = 0; i < data.length ; i++){
+        const textContent = data[i].children[0].textContent
+        const taskCompleted = data[i].children[0].classList.value.split(" ").find(element => element === "line_in_text");
+        localStorage.setItem(`text${i}`, JSON.stringify({text: textContent, status: taskCompleted}))
+    }
+}
+
+function load(){
+    let list = [];
+    for(let i = 0; i <  localStorage.length; i++){
+       const textElement = localStorage.getItem(`text${i}`);
+       list.push(JSON.parse(textElement));
+    }
+    list.forEach((element,index)=>{
+        document.getElementById("task").value = element.text;
+        document.getElementById("add_button").click();
+        if(element.status){
+            const currentPosition = index + 1
+        console.log(currentPosition)
+        document.getElementById(`textNumber${currentPosition}`).click()
+    }
+    })
+    
+}
+
+load();
