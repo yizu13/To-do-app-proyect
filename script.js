@@ -1,4 +1,3 @@
-"use strict";
 let storeField = null;
 let field_value = null;
 let button = null;
